@@ -18,7 +18,7 @@
     "index.js",
     "index.d.ts"
   ],
-  "repository": "trodi/electron-splashscreen",
+  "repository": "dynamic-electron-splashscreen",
   "keywords": [
     "electron",
     "splashscreen",
