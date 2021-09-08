@@ -1,6 +1,6 @@
-[@trodi/electron-splashscreen - v1.0.0](README.md)
+[dynamic-electron-splashscreen - v1.1.5](README.md)
 
-# @trodi/electron-splashscreen - v1.0.0
+# dynamic-electron-splashscreen - v1.1.5
 
 ## Index
 
@@ -23,6 +23,7 @@
 Initializes a splashscreen that will show/hide smartly (and handle show/hiding of main window).
 Use this function if you need to send/receive info to the splashscreen (e.g., you want to send
 IPC messages to the splashscreen to inform the user of the app's loading state).
+Call splash.splashScreen.webContents.send('main-window-ready')
 
 **Parameters:**
 

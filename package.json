@@ -1,12 +1,11 @@
 {
   "name": "dynamic-electron-splashscreen",
-  "version": "1.1.0",
+  "version": "1.1.5",
   "description": "Simple splashscreen for electron applications forked from https://github.com/trodi/electron-splashscreen",
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
     "generate-api-doc": "typedoc --readme none --mode file --theme markdown --hideSources --excludePrivate --out api-doc/ index.ts",
-    "prebuild": "tslint --config tslint.json *.ts",
     "build": "tsc",
     "prepublish": "npm run build && npm run generate-api-doc",
     "preexample": "npm run build",
@@ -18,7 +17,10 @@
     "index.js",
     "index.d.ts"
   ],
-  "repository": "dynamic-electron-splashscreen",
+  "repository": {
+    "type": "git",
+    "url": "dynamic-electron-splashscreen"
+  },
   "keywords": [
     "electron",
     "splashscreen",
@@ -32,10 +34,13 @@
   },
   "homepage": "https://github.com/pilz97/electron-splashscreen#readme",
   "devDependencies": {
-    "electron": "^6.0.2",
+    "electron": "^12.0.5",
     "tslint": "^5.7.0",
     "typedoc": "^0.15.6",
     "typedoc-plugin-markdown": "^2.2.16",
     "typescript": "^3.7.4"
+  },
+  "directories": {
+    "example": "examples"
   }
 }

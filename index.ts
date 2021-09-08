@@ -119,10 +119,12 @@ export const initSplashScreen = (config: Config): BrowserWindow => {
         showSplash();
     }, xConfig.delay);
     if (isDynamicScreen) {
-        const ipcMain = window.require('electron').ipcMain;
+        const ipcMain = require('electron').ipcMain;
         ipcMain.on("main-window-ready", (): void => {
             closeSplashScreen(window, xConfig.minVisible);
         });
+
+        window.show();
     } else {
         window.webContents.on("did-finish-load", (): void => {
             closeSplashScreen(window, xConfig.minVisible);
