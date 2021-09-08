@@ -1,7 +1,7 @@
 {
   "name": "dynamic-electron-splashscreen",
   "version": "1.1.0",
-  "description": "Simple splashscreen for electron applications",
+  "description": "Simple splashscreen for electron applications forked from https://github.com/trodi/electron-splashscreen",
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
@@ -25,12 +25,12 @@
     "splash-screen",
     "loading-screen"
   ],
-  "author": "Troy McKinnon",
+  "author": "Stefan Pilz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/trodi/electron-splashscreen/issues"
+    "url": "https://github.com/pilz97/electron-splashscreen/issues"
   },
-  "homepage": "https://github.com/trodi/electron-splashscreen#readme",
+  "homepage": "https://github.com/pilz97/electron-splashscreen#readme",
   "devDependencies": {
     "electron": "^6.0.2",
     "tslint": "^5.7.0",
