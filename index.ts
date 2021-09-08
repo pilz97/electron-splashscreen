@@ -78,6 +78,13 @@ export interface Config {
  */
 let splashScreen: Electron.BrowserWindow | null;
 /**
+ 
+/**
+ * If the splashscreen is an dynamic one.
+ * @ignore
+ */
+ let isDynamicScreen: boolean;
+ /**
  * Initializes a splashscreen that will show/hide smartly (and handle show/hiding of main window).
  * @param config - Configures splashscren
  * @returns {BrowserWindow} the main browser window ready for loading
@@ -111,9 +118,17 @@ export const initSplashScreen = (config: Config): BrowserWindow => {
         slowStartup = true;
         showSplash();
     }, xConfig.delay);
-    window.webContents.on("did-finish-load", (): void => {
-        closeSplashScreen(window, xConfig.minVisible);
-    });
+    if (isDynamicScreen) {
+        const ipcMain = window.require('electron').ipcMain;
+        ipcMain.on("main-window-ready", (): void => {
+            closeSplashScreen(window, xConfig.minVisible);
+        });
+    } else {
+        window.webContents.on("did-finish-load", (): void => {
+            closeSplashScreen(window, xConfig.minVisible);
+        });
+    }
+
     return window;
 };
 /** Return object for `initDynamicSplashScreen()`. */
@@ -127,10 +142,12 @@ export interface DynamicSplashScreen {
  * Initializes a splashscreen that will show/hide smartly (and handle show/hiding of main window).
  * Use this function if you need to send/receive info to the splashscreen (e.g., you want to send
  * IPC messages to the splashscreen to inform the user of the app's loading state).
+ * Call splash.splashScreen.webContents.send('main-window-ready')
  * @param config - Configures splashscren
  * @returns {DynamicSplashScreen} the main browser window and the created splashscreen
  */
 export const initDynamicSplashScreen = (config: Config): DynamicSplashScreen => {
+    isDynamicScreen = true;
     return {
         main: initSplashScreen(config),
         // initSplashScreen initializes splashscreen so this is a safe cast.
